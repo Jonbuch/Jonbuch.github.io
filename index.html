@@ -1,7 +1,42 @@
 <!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+
+<html lang="en"> <head>
+<meta charset="utf-8">
+<title>D3 Page Template</title>
+<link href="main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="d3/d3.js"></script>
+        </head>
+        <a href="week7.html" title="week7">Go to week7 assignments</a>
+        <a href="ex1.html" title="ex1">Go to ex1</a>
+        <a href="drawsvg.html" title="drawsvg">Go to drawsvg</a>
+         <a href="barchart_svgrect.html" title="as">Go to barchart_svgrect</a>
+         <a href="scatter.html" title="drawsvg">Go to scatterplot</a>
+
+        <body>
+<script type="text/javascript">
+
+	var dataset = [ 5, 10, 15, 20, 25 ];
+	d3.select("body").selectAll("p")
+        .data(dataset)
+        .enter()
+        .append("p")
+        .text(function(d) { return "How do you like " + d; })
+        .style("color", function(d) {
+			if (d > 15) { //Threshold of 15
+				return "red"; 
+			} else {
+				return "black"; }
+		});
+		
+
+            </script>
+        <svg width="500" height="100">
+			<rect x="0" y="40" width="80" height="80" fill="purple" class = 'pumpkin'/> 
+			<rect x="20" y="5" width="30" height="80" fill="blue" opacity = '0.3'/> 
+			<rect x="40" y="10" width="30" height="30" fill="green" opacity = '0.6'/>
+			<rect x="60" y="15" width="80" height="80" fill="yellow"/> 
+			<rect x="80" y="20" width="80" height="30" fill="red"/>
+		</svg>
+		<div class = 'bar'></div>
+        </body>
 </html>

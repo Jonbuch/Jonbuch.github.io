@@ -1,0 +1,15 @@
+body{
+	font-family: Helvetica;
+	font-size: 24px;
+}
+.pumpkin {
+fill: yellow;
+        stroke: orange;
+        stroke-width: 5;
+}
+
+div.bar {
+display: inline-block;
+width: 20px;
+height: 75px; /* We'll override height later */ background-color: teal;
+}
