@@ -21,16 +21,13 @@
 </head>
 
 <body>
-	<a href="index.html" title="index">Go back to index</a>
-	<br>
-	<br>
 
-	<p>Click on the blue square to toggle between years</p>
+	<p>Click on this text to update the chart with new data values</p>
 
 	<script type="text/javascript">
 // <a href="index.html" title="week7">Go to index</a>
-		var w = 900;
-		var h = 800;
+		var w = 800;
+		var h = 600;
 		var padding = 80;
 
 		var dataTrial = [
@@ -54,8 +51,6 @@
 		var xAxisGlobal;
 		var yAxisGlobal;
 
-		var displayYearGlobal;
-
 
 		//Create SVG element
 		var svg = d3.select("body")
@@ -63,13 +58,6 @@
 			.attr("width", w)
 			.attr("height", h);
 
-/*
-		d3.csv("data_2003_small.csv", function(d) {
-			dataset = d;
-			parseData(dataset);
-			visualizeData(dataTrial);
-    	});
-*/
     	d3.csv(datafileName, function(d) {
 			dataset = d;
 			parseData(dataset);
@@ -172,14 +160,6 @@
 			}
 		}	
 
-		var toggleButton = svg.append("rect")
-    		.attr("x", 5)
-    		.attr("y", h/50)
-    		.attr("width", 40)
-    		.attr("height", 40)
-    		.attr("fill", "blue");
-
-
 		function visualizeData(inputArray) {
 			var xScale = d3.scale.linear()
 								 .domain([0, d3.max(inputArray, function(d) { return d.values[0]; })])
@@ -264,24 +244,10 @@
         		.attr("dy", "1em")
         		.style("text-anchor", "middle")
         		.text("LARCENY / THEFT");
-
-        	svg.append("text")
-        		.attr("y", 40)
-        		.attr("x",w/2-30)
-        		.attr("dy", "1em")
-        		.style("text-anchor", "middle")
-        		.text("San Francisco Crime in districts");
-        	var displayYear = svg.append("text")
-        		.attr("y", 60)
-        		.attr("x",w/2-30)
-        		.attr("dy", "1em")
-        		.style("text-anchor", "middle")
-        		.text(currentYear);
-        	displayYearGlobal = displayYear;
-
 		}
 		function reVisualizeData(inputArray) {
 
+			//Define X axis
 			var xAxis = d3.svg.axis()
 							  .scale(xScaleGlobal)
 							  .orient("bottom")
@@ -335,12 +301,9 @@
 				.attr("transform", "translate(" + padding + ",0)")
 				.call(yAxis);
 
-			displayYearGlobal
-				.text(currentYear);
-
 		}
 		
-		d3.select("rect")
+		d3.select("p")
 				.on("click", function() {
 					if (currentYear == "2003"){
 						datafileName = "data_2015.csv";
