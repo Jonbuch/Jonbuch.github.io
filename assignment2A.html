@@ -208,6 +208,7 @@
 				.data(inputArray)
 				.enter()
 				.append("circle")
+				.attr("fill", "green")
 				.attr("cx", function(d) {
 					return xScale(d.values[0]);
 				})
@@ -295,6 +296,7 @@
 			svg.selectAll("circle")
 				.data(inputArray)
 				.transition()
+				.attr("fill", "green")
 				.attr("cx", function(d) {
 					return xScaleGlobal(d.values[0]);
 				})
